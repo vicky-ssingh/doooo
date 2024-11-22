@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOI Information - Journal Website</title>
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --text-color: #333;
+            --header-bg: #ffffff;
+            --footer-bg: #343a40;
+            --footer-text: #ffffff;
+            --card-bg: #ffffff;
+            --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition-speed: 0.3s;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background-color: var(--header-bg);
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            height: 50px;
+            transition: transform var(--transition-speed);
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-color);
+            transition: color var(--transition-speed);
+        }
+
+        nav ul li a:hover,
+        nav ul li a.active {
+            color: var(--primary-color);
+        }
+
+        .login-btn {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color var(--transition-speed);
+        }
+
+        .login-btn:hover {
+            background-color: #0056b3;
+        }
+
+        main {
+            padding: 2rem 0;
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-color);
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--card-shadow);
+            transition: transform var(--transition-speed);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 1rem;
+        }
+
+        .benefit-card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: var(--card-shadow);
+            transition: transform var(--transition-speed);
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+        }
+
+        details {
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 0.5rem;
+            transition: background-color var(--transition-speed);
+        }
+
+        details:hover {
+            background-color: #f0f0f0;
+        }
+
+        summary {
+            font-weight: bold;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        summary:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px var(--primary-color);
+        }
+
+        .resource-links {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .resource-links a {
+            display: inline-block;
+            background-color: var(--card-bg);
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: background-color var(--transition-speed), transform var(--transition-speed);
+            box-shadow: var(--card-shadow);
+        }
+
+        .resource-links a:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        footer {
+            background-color: var(--footer-bg);
+            color: var(--footer-text);
+            padding: 2rem 0;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .contact-info, .footer-links, .social-media {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a, .social-media a {
+            color: var(--footer-text);
+            text-decoration: none;
+            margin-right: 10px;
+            transition: color var(--transition-speed);
+        }
+
+        .footer-links a:hover, .social-media a:hover {
+            color: var(--primary-color);
+        }
+
+        @media (max-width: 768px) {
+            header .container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            nav ul {
+                flex-direction: column;
+                margin-top: 1rem;
+            }
+
+            nav ul li {
+                margin-right: 0;
+                margin-bottom: 0.5rem;
+            }
+
+            .login-btn {
+                margin-top: 1rem;
+            }
+
+            .footer-content {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <img src="/placeholder.svg?height=50&width=150" alt="Journal Logo" class="logo">
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#" class="active">DOI Information</a></li>
+                    <li><a href="#">Submit Article</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </nav>
+            <a href="#" class="login-btn">Login</a>
+        </div>
+    </header>
+
+    <main>
+        <section id="intro" class="container">
+            <div class="card">
+                <h1>DOI Information</h1>
+                <p>Digital Object Identifiers (DOIs) are crucial in ensuring persistent access to digital content in academic publishing. Learn more about how DOIs work and their importance in the scholarly ecosystem.</p>
+            </div>
+        </section>
+
+        <section id="importance" class="container">
+            <div class="card">
+                <h2>Importance of DOIs</h2>
+                <ul>
+                    <li>Persistent links for long-term accessibility</li>
+                    <li>Simplified citation in academic references</li>
+                    <li>Reliable access to published digital materials</li>
+                    <li>Enhanced discoverability of research</li>
+                    <li>Improved tracking of research impact</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="journal-use" class="container">
+            <div class="card">
+                <h2>How Our Journal Uses DOIs</h2>
+                <p>We systematically assign DOIs to all published articles, ensuring that each piece of research has a unique, persistent identifier. To find a DOI for any article published in our journal:</p>
+                <ol>
+                    <li>Visit the article page on our website</li>
+                    <li>Locate the DOI below the article abstract</li>
+                    <li>Use the DOI to create a persistent link to the article</li>
+                </ol>
+            </div>
+        </section>
+
+        <section id="benefits" class="container">
+            <h2>Benefits for Authors and Readers</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <h3>For Authors</h3>
+                    <ul>
+                        <li>Enhanced discoverability through global DOI indexing</li>
+                        <li>Simplified citations leading to higher academic recognition</li>
+                        <li>Accurate tracking of article usage and impact</li>
+                        <li>Persistent identification of research outputs</li>
+                    </ul>
+                </div>
+                <div class="benefit-card">
+                    <h3>For Readers</h3>
+                    <ul>
+                        <li>Easy and reliable access to articles via DOI links</li>
+                        <li>Simplified reference management</li>
+                        <li>Ability to track article versions and updates</li>
+                        <li>Enhanced interconnectivity between related research</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="registration" class="container">
+            <div class="card">
+                <h2>DOI Registration and Management</h2>
+                <p>We register DOIs through CrossRef, ensuring proper indexing and management of all our published content. This process involves:</p>
+                <ol>
+                    <li>Assigning a unique DOI to each article upon acceptance</li>
+                    <li>Submitting article metadata to CrossRef</li>
+                    <li>Activating the DOI upon article publication</li>
+                    <li>Maintaining and updating DOI information as needed</li>
+                </ol>
+            </div>
+        </section>
+
+        <section id="faq" class="container">
+            <div class="card">
+                <h2>FAQs about DOIs</h2>
+                <details>
+                    <summary>What is a DOI?</summary>
+                    <p>A DOI (Digital Object Identifier) is a unique alphanumeric string assigned to digital objects like journal articles, providing a persistent link to their location on the internet.</p>
+                </details>
+                <details>
+                    <summary>How are DOIs registered?</summary>
+                    <p>DOIs are registered through registration agencies like CrossRef. Publishers submit metadata about their content, which is then assigned a unique DOI.</p>
+                </details>
+                <details>
+                    <summary>What if a DOI link breaks?</summary>
+                    <p>If a DOI link breaks, the publisher is responsible for updating the DOI's location. Users should still be able to access the content through the DOI system.</p>
+                </details>
+                <details>
+                    <summary>How to use a DOI for citation?</summary>
+                    <p>To cite using a DOI, include it at the end of your reference. For example: Author, A. (Year). Title. Journal Name, Volume(Issue), pp-pp. https://doi.org/10.xxxx/xxxxx</p>
+                </details>
+            </div>
+        </section>
+
+        <section id="resources" class="container">
+            <div class="card">
+                <h2>External Links and Resources</h2>
+                <ul class="resource-links">
+                    <li><a href="https://www.crossref.org/" target="_blank" rel="noopener noreferrer">CrossRef</a></li>
+                    <li><a href="https://www.doi.org/" target="_blank" rel="noopener noreferrer">DOI Foundation</a></li>
+                    <li><a href="https://www.datacite.org/" target="_blank" rel="noopener noreferrer">DataCite</a></li>
+                    <li><a href="https://www.handle.net/" target="_blank" rel="noopener noreferrer">Handle System</a></li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="contact-info">
+                    <h3>Contact Us</h3>
+                    <p>Email: info@journalwebsite.com</p>
+                    <p>Phone: +1 (555) 123-4567</p>
+                    <p>Address: 123 Academic St, Research City, 12345</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Help Center</a>
+                </div>
+                <div class="social-media">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Add smooth scrolling to all links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add active class to current nav item
+        const currentLocation = location.href;
+        const menuItems = document.querySelectorAll('nav ul li a');
+        const menuLength = menuItems.length;
+        for (let i = 0; i < menuLength; i++) {
+            if (menuItems[i].href === currentLocation) {
+                menuItems[i].className = 'active';
+            }
+        }
+    </script>
+</body>
+</html>
+
